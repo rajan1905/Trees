@@ -30,6 +30,7 @@ public class BST implements Tree
 					if(traverse.getLeftChild() == null)
 					{
 						traverse.setLeftChild(node);
+						node.setParent(traverse);
 						result = true;
 					}
 					else
@@ -43,6 +44,7 @@ public class BST implements Tree
 					if(traverse.getRightChild() == null)
 					{
 						traverse.setRightChild(node);
+						node.setParent(traverse);
 						result = true;
 					}
 					else
@@ -54,6 +56,13 @@ public class BST implements Tree
 		}
 		
 		return result;
+	}
+	
+	public boolean deleteNode(int data)
+	{
+		boolean deleted = false;
+		
+		return deleted;
 	}
 	
 	public Node getParent() 
