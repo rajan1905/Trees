@@ -1,39 +1,39 @@
 package tree.binarytrees.node;
 
-public class Node<E>
+public class Node
 {
-	private E data;
-	private Node<E> leftChild;
-	private Node<E> rightChild;
+	private int data;
+	private Node leftChild;
+	private Node rightChild;
 	private boolean isTraversed;
-	private Node<E> parent;
+	private Node parent;
 	
-	public E getData() 
+	public int getData() 
 	{
 		return data;
 	}
 	
-	public void setData(E data) 
+	public void setData(int data) 
 	{
 		this.data = data;
 	}
 	
-	public Node<E> getLeftChild() 
+	public Node getLeftChild() 
 	{
 		return leftChild;
 	}
 	
-	public void setLeftChild(Node<E> leftChild)
+	public void setLeftChild(Node leftChild)
 	{
 		this.leftChild = leftChild;
 	}
 	
-	public Node<E> getRightChild() 
+	public Node getRightChild() 
 	{
 		return rightChild;
 	}
 	
-	public void setRightChild(Node<E> rightChild) 
+	public void setRightChild(Node rightChild) 
 	{
 		this.rightChild = rightChild;
 	}
@@ -48,13 +48,19 @@ public class Node<E>
 		this.isTraversed = isTraversed;
 	}
 	
-	public Node<E> getParent() 
+	public Node getParent() 
 	{
 		return parent;
 	}
 	
-	public void setParent(Node<E> parent) 
+	public void setParent(Node parent) 
 	{
 		this.parent = parent;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return data+"";
 	}
 }

@@ -20,7 +20,6 @@ public class Utilities
 	 * @param node
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
 	public static int countChild(Node node)
 	{
 		int result = 0;
@@ -40,7 +39,6 @@ public class Utilities
 	 * @param node
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
 	public static boolean hasLeftChild(Node node)
 	{
 		return node.getLeftChild() != null;
@@ -52,7 +50,6 @@ public class Utilities
 	 * @param node
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
 	public static boolean hasRightChild(Node node)
 	{
 		return node.getRightChild() != null;
@@ -63,12 +60,13 @@ public class Utilities
 	 * @param node
 	 * @return
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static List postOrderTraversal(Node node)
+	public static List<Integer> postOrderTraversal(Node node)
 	{
-		List result = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		Stack<Node> stack = new Stack<>();
 		Node nextNode = null;
+		Node parent = node;
+		boolean traversedAll = false;
 		
 		if(countChild(node) == 0)
 		{
@@ -78,20 +76,18 @@ public class Utilities
 		{
 			stack.push(node);
 			
-			while((!stack.isEmpty() && !(countChild(node) == 0)))
+			while(!traversedAll)
 			{
 				if(hasRightChild(node))
 				{
-					stack.push(node.getLeftChild());
-					nextNode = node.getLeftChild();
+					stack.push(node.getRightChild());
+					nextNode = node.getRightChild();
 				}
 				
 				if(hasLeftChild(node))
 				{
-					stack.push(node.getRightChild());
-					
-					if(nextNode == null)
-						nextNode = node.getRightChild();
+					stack.push(node.getLeftChild());
+					nextNode = node.getLeftChild();
 				}
 				
 				node.setIsTraversed(true);
@@ -99,19 +95,28 @@ public class Utilities
 				if(nextNode == null)
 				{
 					Node poppedNode = null;
+					boolean keepPopping = true;
 					
-					while(true)
+					while(keepPopping)
 					{
 						poppedNode = stack.pop();
+						
+						if(poppedNode == parent)
+						{
+							traversedAll = true;
+							keepPopping = false;
+						}
 						
 						if(poppedNode.getIsTraversed() == false)
 						{
 							stack.push(poppedNode);
 							node = poppedNode;
-							break;
-							
+							keepPopping = false;					
 						}
-						result.add(poppedNode);
+						else
+						{
+							result.add(poppedNode.getData());
+						}
 					}
 				}
 				else
@@ -119,7 +124,6 @@ public class Utilities
 					node = nextNode;
 					nextNode = null;
 				}
-			
 			}
 		}
 		return result;		
