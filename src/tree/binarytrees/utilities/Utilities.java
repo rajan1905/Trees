@@ -56,6 +56,20 @@ public class Utilities
 	}
 	
 	/**
+	 * Checks whether the {@link Node} is a leaf node
+	 * with no childs.
+	 * 
+	 * @param node
+	 * @return
+	 */
+	public static boolean isALeaf(Node node)
+	{
+		return countChild(node) == 0 ? true : false;
+	}
+	
+	/**
+	 * Iterates a Binary Tree by Post Order Traversal
+	 * mechanics.
 	 * 
 	 * @param node
 	 * @return
@@ -68,7 +82,7 @@ public class Utilities
 		Node parent = node;
 		boolean traversedAll = false;
 		
-		if(countChild(node) == 0)
+		if(isALeaf(node))
 		{
 			result.add(node.getData());
 		}
@@ -129,4 +143,14 @@ public class Utilities
 		return result;		
 	}
 	
+	
+	public static void postOrderTraversalRecursively(Node node, List<Integer> result)
+	{
+		if(node != null)
+		{
+			postOrderTraversalRecursively(node.getLeftChild(), result);
+			postOrderTraversalRecursively(node.getRightChild(), result);
+			result.add(node.getData());
+		}
+	}
 }
