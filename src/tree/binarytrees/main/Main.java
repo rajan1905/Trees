@@ -24,7 +24,7 @@ public class Main
 
 		//System.out.println("Level of the tree is : "+ Utilities.treeLevel(bst));
 		
-		System.out.println("Printing Tree : \n" + Utilities.printBinaryTree(bst));
+		Utilities.printBinaryTree(bst);
 	}
 	
 	public static long benchmarkPostOrderTraversal(BST bst)

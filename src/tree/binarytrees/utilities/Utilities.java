@@ -247,9 +247,10 @@ public class Utilities
 				if(nn == null)
 					System.out.print("-");
 				else
-					System.out.println(nn.getData());
+					System.out.print(nn.getData());
 				
-				System.out.print(tab);
+				System.out.print(tab+tab);
+				
 			}
 			System.out.println();
 			travelledToIndex += Math.pow(base, i);
