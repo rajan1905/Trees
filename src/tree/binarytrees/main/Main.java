@@ -13,16 +13,18 @@ public class Main
 	public static void main(String[] args) 
 	{
 		BST bst = new BST();
-		int nodesCount = Integer.MAX_VALUE/2;
-		Random random = new Random();
+		int[] data = {14,10,13,12,11,16,19,17,18};
+
+		for(int i=0;i<data.length;i++)
+		 {
+		 	bst.addNode(data[i]);
+		 }
+
+		//List<Integer> list=Utilities.postOrderTraversal(bst.getParent());
+
+		//System.out.println("Level of the tree is : "+ Utilities.treeLevel(bst));
 		
-		for(int i=0;i<nodesCount;i++)
-		{
-			bst.addNode(random.nextInt(1000));
-		}
-		
-		System.out.println("Iterative Post Order Traversal took time : "+benchmarkPostOrderTraversal(bst));
-		System.out.println("Recursively Post Order Traversal took time : "+benchmarkPostOrderTraversalRecursively(bst));
+		System.out.println("Printing Tree : \n" + Utilities.printBinaryTree(bst));
 	}
 	
 	public static long benchmarkPostOrderTraversal(BST bst)
