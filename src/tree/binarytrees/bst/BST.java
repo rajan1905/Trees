@@ -8,7 +8,7 @@ import tree.interfaces.Tree;
 
 public class BST implements Tree
 {
-	private Node parent = null;
+	private Node root = null;
 	private List<Node> leafNodes = new ArrayList<>();
 	private int nodesCount = 0;
 	
@@ -25,13 +25,13 @@ public class BST implements Tree
 		Node node = new Node();
 		node.setData(data);
 		
-		if(parent == null)
+		if(root == null)
 		{
-			parent = node;
+			root = node;
 		}
 		else
 		{	
-			traverse = parent;
+			traverse = root;
 			
 			while(traverse.getData() != data && !result)
 			{
@@ -98,8 +98,8 @@ public class BST implements Tree
 		return leafNodes;
 	}
 
-	public Node getParent() 
+	public Node getRoot() 
 	{
-		return parent;
+		return root;
 	}
 }

@@ -9,6 +9,6 @@ public interface Tree
 	public boolean addNode(int data);
 	public boolean deleteNode(int data);	
 	public List<Node> getLeafNodes();
-	public Node getParent();
+	public Node getRoot();
 	public int getNodesCount(); 
 }

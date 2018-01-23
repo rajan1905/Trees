@@ -7,6 +7,8 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.concurrent.ArrayBlockingQueue;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import tree.binarytrees.bst.BST;
 import tree.binarytrees.node.Node;
 import tree.interfaces.Tree;
@@ -181,7 +183,7 @@ public class Utilities
 		int index = 0;
 		int base = 2;
 		int travelledLevel = 0;
-		Node parentNode = node.getParent();
+		Node parentNode = node.getRoot();
 		int treeLevel = treeLevel(node);
 		
 		levelList.add(parentNode);
@@ -267,7 +269,7 @@ public class Utilities
 	public static int treeLevel(Tree bst)
 	{
 		int level = 0;
-		Node bstParentNode = bst.getParent();
+		Node bstParentNode = bst.getRoot();
 		List<Node> leafNodes = bst.getLeafNodes();		
 		
 		Iterator<Node> listIterator = leafNodes.iterator();
@@ -293,5 +295,5 @@ public class Utilities
 		
 		return level;
 	}
-	
+
 }
