@@ -14,6 +14,7 @@ import tree.interfaces.Tree;
 public class ConcurrentUtility 
 {
 	public static final ConcurrentUtility INSTANCE = new ConcurrentUtility();
+	private static ExecutorService threadPool = Executors.newCachedThreadPool();
 	
 	class PostOrderTraversal implements Callable<List<Integer>>
 	{
@@ -40,8 +41,6 @@ public class ConcurrentUtility
 		
 		Callable<List<Integer>> processLeftTree = INSTANCE.new PostOrderTraversal(root.getLeftChild());
 		Callable<List<Integer>> processRightTree = INSTANCE.new PostOrderTraversal(root.getRightChild());
-		
-		ExecutorService threadPool = Executors.newCachedThreadPool();
 		
 		Future<List<Integer>> leftTreeResult = threadPool.submit(processLeftTree);
 		Future<List<Integer>> rightTreeResult = threadPool.submit(processRightTree);
