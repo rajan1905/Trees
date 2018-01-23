@@ -49,8 +49,6 @@ public class ConcurrentUtility
 		result.addAll(rightTreeResult.get());
 		result.add(root.getData());
 		
-		threadPool.shutdown();
-		
 		return result;
 	}
 	

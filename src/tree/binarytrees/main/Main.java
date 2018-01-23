@@ -23,7 +23,7 @@ public class Main
 		 }*/
 		
 		Random random = new Random();
-		int size = 1000000;
+		int size = 10000000/2;
 		for(int i=0;i<size;i++)
 			bst.addNode(random.nextInt(size));
 		
@@ -47,13 +47,13 @@ public class Main
 		
 		for(int i=0 ; i<count ; i++)
 		{
-			long start = System.nanoTime();
+			long start = System.currentTimeMillis();
 			Utilities.postOrderTraversal(bst.getRoot());
-			long end = System.nanoTime();
+			long end = System.currentTimeMillis();
 			
 			result += end-start;
 			
-			System.out.println("Non Threaded with time : " +result/count);
+			System.out.println("Non Threaded with time : " +result/(count));
 		}
 	}
 	
@@ -64,12 +64,12 @@ public class Main
 		
 		for(int i=0 ; i<count ; i++)
 		{
-			long start = System.nanoTime();
+			long start = System.currentTimeMillis();
 			ConcurrentUtility.postOrderTraversalConcurrent(bst);
-			long end = System.nanoTime();
+			long end = System.currentTimeMillis();
 			
 			result += end-start;
-			System.out.println("Threaded with time : " +result/count);
+			System.out.println("Threaded with time : " +result/(count));
 		}
 	}
 	
